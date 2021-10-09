@@ -3,7 +3,7 @@ ini_set('xdebug.overload_var_dump', 0);
 $name = $_POST['name'];
 $coupon_id = $_POST['coupon'];
 $num = intval($_POST['num']);
-$conn = mysqli_connect("localhost", "root", "root");
+$conn = mysqli_connect("localhost", "root", '');
 if (!$conn) {
 	die(mysqli_error($conn));
 }

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("includes/permission_manageaccount.php");
-$conn = mysqli_connect("localhost", "root", "root");
+$conn = mysqli_connect("localhost", "root", '');
 if (!$conn) {
 	die(mysqli_error($conn));
 }
@@ -93,7 +93,7 @@ $role = $check['role1'];
 							</tr>
 						</thead>
 						<?php
-						$conn = mysqli_connect("localhost", "root", "root");
+						$conn = mysqli_connect("localhost", "root", '');
 						if (!$conn) {
 							die(mysqli_error($conn));
 						}
@@ -147,7 +147,7 @@ $role = $check['role1'];
 							</tr>
 						</thead>
 						<?php
-						$conn = mysqli_connect("localhost", "root", "root");
+						$conn = mysqli_connect("localhost", "root", '');
 						if (!$conn) {
 							die(mysqli_error($conn));
 						}

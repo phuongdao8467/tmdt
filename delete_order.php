@@ -1,6 +1,6 @@
 <?php
 $orderlist_id=$_POST['orderlist_id'];
-$conn = mysqli_connect("localhost", "root", "root");
+$conn = mysqli_connect("localhost", "root", '');
 if (!$conn) {
     die(mysqli_error($conn));
 }
