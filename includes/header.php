@@ -25,7 +25,7 @@
 							<a href="product.php">Cửa hàng</a>
 						</li>
 						<?php
-						session_start();
+						//session_start();
 						if (isset($_SESSION['loggedin']) == false) {
 						} else {
 							$conn = mysqli_connect("localhost", "root", "root");

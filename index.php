@@ -1,6 +1,6 @@
 <?php include "./phpModules/getUser.php"; ?>
 <?php
-    //session_start();
+    session_start();
     include("includes/check-shutdown.php");
 
 ?>

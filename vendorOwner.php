@@ -12,7 +12,8 @@
 	$result=mysqli_query($conn,"call getUser_id('$value');");
 	$check=mysqli_fetch_array($result);
 	$user_id=$check['user_id'];
-	$result=mysqli_query($conn,"call getRole'$user_id');");
+	mysqli_next_result($conn);
+	$result = mysqli_query($conn, "call getRole('$user_id');");
 	$check=mysqli_fetch_array($result);
 	$role=$check['role1'];
 ?>

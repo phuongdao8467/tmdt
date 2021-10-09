@@ -1,9 +1,9 @@
 <?php
 $is_logged_in=0;
-if ($_SESSION['loggedin'] == false) {
+if (isset($_SESSION['loggedin']) == false) {
     $is_logged_in=0;
 }else {
-	if ($_SESSION['loggedin'] == true) {
+	if (isset($_SESSION['loggedin']) == true) {
         $is_logged_in=1;
 	}
 }
