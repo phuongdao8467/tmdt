@@ -1,7 +1,6 @@
 <?php
   session_start();
-  include("includes/permission_cheff.php");
-	session_start();
+  include("includes/permission_supplier.php");
 	$conn=mysqli_connect("localhost","root","root");
 	if(!$conn){
 		die(mysqli_error($conn));
@@ -21,7 +20,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Cheff</title>
+	<title>Nhà cung cấp</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -81,15 +80,17 @@
               </div>
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionOne">
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-responsive">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Hình minh họa</th>
-                            <th scope="col">Tên món ăn</th>
+                            <th scope="col">Tên người mua</th>
+                            <th scope="col" style="width: 100px">Hình</th>
+                            <th scope="col">Tên sản phẩm</th>
                             <th scope="col">Số lượng</th>
-                            <th scope="col">Time</th>
-                            <th scope="col">Hoàn thành</th>
+                            <th scope="col">Tổng</th>
+                            <th scope="col">Thời gian đặt hàng</th>                      
+                            <th scope="col">Trạng thái</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -101,7 +102,7 @@
   								$result=mysqli_select_db($conn,"smartfood");
   								$conn->set_charset('utf8');
   								//$user_id=$_SESSION['user_id'];
-  								$result=mysqli_query($conn,"select orderlist_id, image, name,num, time1, status2 from orderlist,food where orderlist.food_id=food.food_id;");
+  								$result=mysqli_query($conn,"select orderlist_id, image, user.name as username, food.name as foodname, num, status2, time1, value from orderlist, food, user, bill where orderlist.food_id=food.food_id and orderlist.user_id=user.user_id and orderlist.bill_id=bill.bill_id;");
   								$orders=array();
   								$food = array();
   								$num=array();
@@ -109,18 +110,20 @@
   								while ($row=mysqli_fetch_array($result)) {
   									if ($row['status2']==1 or $row['status2']==4 or $row['status2']==5){
   										continue;
-									  }
-									  
+									  }									  
   								?>
                           <tr>
                           	<td style="display: none;"><?php echo $row['orderlist_id']; ?></td>
                             <th scope="row"><?php echo $count; $count=$count+1; ?></th>
-                            <td><img src="<?php echo "images/".$row['image']; ?>" style="height: 200px; width: 200px"alt="hình 1" class="img-thumbnail"></td>
-                            <td><?php echo $row['name']; ?></td>
+                            <td><?php echo $row['username']; ?></td>
+                            <td><img src="<?php echo "images/".$row['image']; ?>" alt="hình 1" class="img-fluid"></td>                            
+                            <td><?php echo $row['foodname']; ?></td>
                             <td><?php echo $row['num']; ?></td>
+                            <td><?php echo $row['value']; ?></td>
+                            
                             <td><?php echo date("H:i",strtotime($row['time1'])); ?></td>
                             <td><div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <input class="form-check-input" type="checkbox" value="<?php echo $row['status2'] ?>" id="defaultCheck1">
                               </div></td>
                           </tr>
                           <?php } ?>

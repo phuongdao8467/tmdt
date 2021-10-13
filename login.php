@@ -65,7 +65,7 @@
 						header("refresh: 1;url=./ITstaff.php");
 						break;
 					case 2:
-						header("refresh: 1;url=./cook.php");
+						header("refresh: 1;url=./supplier.php");
 						break;
 					case 3: 
 						header("refresh: 1;url=./index.php");

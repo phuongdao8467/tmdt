@@ -60,7 +60,7 @@
 										<a>Tính năng</a>
 										<ul class="sub_menu">
 
-											<li><a href="cook.php">Đầu bếp</a></li>
+											<li><a href="supplier.php">Nhà cung cấp</a></li>
 										</ul>
 									</li>
 								<?php
@@ -195,7 +195,7 @@
 					<a href="product.php">Cửa hàng</a>
 				</li>
 				<?php
-				session_start();
+				// session_start();
 				if (isset($_SESSION['loggedin']) == false) {
 				} else {
 					$conn = mysqli_connect("localhost", "root", "root");
@@ -231,7 +231,7 @@
 							<li class="item-menu-mobile">
 								<a>Tính năng</a>
 								<ul class="sub-menu">
-									<li><a href="cook.php">Đầu bếp</a></li>
+									<li><a href="supplier.php">Nhà cung cấp</a></li>
 								</ul>
 								<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
 							</li>
