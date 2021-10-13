@@ -536,4 +536,22 @@ Select * from usercoupon;
 INSERT INto coupon(coupon_id ,start1 ,end1 ,value ) values('ad-123','2019-12-30 00:00:00','2019-12-30 00:00:00',20000);
 call addCouponUser(3,'ad-123',4);
 
-
+-- add some new management product
+alter table food add num int;
+Drop procedure if exists addFoodNum;
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `smartfood`.`addFoodNum`(
+	food_id1 int,
+	in num1 int
+)
+begin
+	if(!exists(select * from food where food_id =food_id1))then
+		select -1;
+	else
+		Update food
+		set num=num1 where food_id=food_id1 ;
+		select 1;
+	end if;
+end
+	$$
+Delimiter ;	

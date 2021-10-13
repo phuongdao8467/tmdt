@@ -85,7 +85,7 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Tên người mua</th>
-                            <th scope="col" style="width: 100px">Hình</th>
+                            <th scope="col">Liên lạc</th>
                             <th scope="col">Tên sản phẩm</th>
                             <th scope="col">Số lượng</th>
                             <th scope="col">Tổng</th>
@@ -102,29 +102,33 @@
   								$result=mysqli_select_db($conn,"smartfood");
   								$conn->set_charset('utf8');
   								//$user_id=$_SESSION['user_id'];
-  								$result=mysqli_query($conn,"select orderlist_id, image, user.name as username, food.name as foodname, num, status2, time1, value from orderlist, food, user, bill where orderlist.food_id=food.food_id and orderlist.user_id=user.user_id and orderlist.bill_id=bill.bill_id;");
+  								$result=mysqli_query($conn,"select orderlist_id, phonenumber, user.name as username, food.name as foodname, orderlist.num, status2, time1, value from orderlist, food, user, bill where orderlist.food_id=food.food_id and orderlist.user_id=user.user_id and orderlist.bill_id=bill.bill_id;");
   								$orders=array();
   								$food = array();
   								$num=array();
   								$count=1;
   								while ($row=mysqli_fetch_array($result)) {
-  									if ($row['status2']==1 or $row['status2']==4 or $row['status2']==5){
-  										continue;
-									  }									  
+  									// if ($row['status2']==1 or $row['status2']==4 or $row['status2']==5){
+  									// 	continue;
+									  // }									  
   								?>
                           <tr>
                           	<td style="display: none;"><?php echo $row['orderlist_id']; ?></td>
                             <th scope="row"><?php echo $count; $count=$count+1; ?></th>
                             <td><?php echo $row['username']; ?></td>
-                            <td><img src="<?php echo "images/".$row['image']; ?>" alt="hình 1" class="img-fluid"></td>                            
+                            <td><?php echo $row['phonenumber']; ?></td>
                             <td><?php echo $row['foodname']; ?></td>
                             <td><?php echo $row['num']; ?></td>
                             <td><?php echo $row['value']; ?></td>
                             
                             <td><?php echo date("H:i",strtotime($row['time1'])); ?></td>
-                            <td><div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="<?php echo $row['status2'] ?>" id="defaultCheck1">
-                              </div></td>
+                            <td>
+                              <select class="custom-select form-control" id="selectStatus" name="selectStatus">
+                                <option value="1" <?php if ($row['status2']==1) echo 'selected' ?> >Chưa thanh toán</option>
+                                <option value="2" <?php if ($row['status2']==2) echo 'selected' ?> >Đang giao</option>
+                                <option value="3" <?php if ($row['status2']==3) echo 'selected' ?> >Đã giao</option>
+                              </select>
+                            </td>
                           </tr>
                           <?php } ?>
                         </tbody>
@@ -133,68 +137,225 @@
               </div>
             </div>
             <!--manage order area end-->
-            <!--manage menu area start-->
+            <!--manage eating area start-->
             <div class="card">
               <div class="card-header" id="headingTwo">
                 <h2 class="mb-0">
                   <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Quản lí thực đơn.
+                    Quản lí sản phẩm.
                   </button>
                 </h2>
               </div>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionOne">
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-responsive" accept-charset="UTF-8">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Hình minh họa</th>
-                            <th scope="col">Tên món ăn</th>
+                            <th scope="col" style="width: 100px;">Hình</th>
+                            <th scope="col">Tên sản phẩm</th>
                             <th scope="col">Giới thiệu</th>
                             <th scope="col">Giá bán</th>
-                            <th scope="col">Trạng thái</th>
+                            <th scope="col">Số lượng</th>
+							              <th scope="col"></th>
+							              <th scope="col"></th>
                           </tr>
                         </thead>
                         <tbody>
                         	<?php
-  								$conn=mysqli_connect("localhost","root","root");
-  								if(!$conn){
-     								die(mysqli_error($conn));
-  								}
-  								$result=mysqli_select_db($conn,"smartfood");
-  								$conn->set_charset('utf8');
-  								//$user_id=$_SESSION['user_id'];
-  								$result=mysqli_query($conn,"call getFood();");
-  								$count=1;
-  								while ($row=mysqli_fetch_array($result)) {
-  								?>
+								$conn=mysqli_connect("localhost","root","root");
+								if(!$conn){
+									die(mysqli_error($conn));
+								}
+								$result=mysqli_select_db($conn,"smartfood");
+								$conn->set_charset('utf8');
+            					$result=mysqli_query($conn,"call getfood();");
+            					$count=1;
+								while ($row=mysqli_fetch_array($result)) {
+									
+								?>
                           <tr>
-                          	<td style="display: none;"><?php echo $row['food_id']; ?></td>
-                            <th scope="row"><?php echo $count;?></th>
-                            <td><img src="<?php echo "images/".$row['image']; ?>" style="height: 200px; width: 200px;"alt="hình 1" class="img-thumbnail"></td>
-                            <td><?php echo $row['name']; ?></td>
-                            <td><?php echo $row['description']; ?></td>
-                            <td><?php echo $row['price']; ?></td>
-                            <td><div class="form-check">
-                                <input class="form-check-input" type="radio" name="<?php echo "gridRadios".$count;?>" <?php if($row['status']=='1'){echo 'checked="checked"';}?> id="not-sold-out" value="option1" >
-                                <label class="form-check-label" for="gridRadios1">
-                                  Còn
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="<?php echo "gridRadios".$count; $count=$count+1; ?>" <?php if($row['status']=='0'){echo 'checked="checked"';}?>id="sold-out" value="option2">
-                                <label class="form-check-label" for="gridRadios2">
-                                    Hết
-                                </label>
-                              </div></td>
+                            <td scope="row"><?php echo $count; ?></td>
+                            <td><img src="<?php echo "images/".$row['image'];?>" alt="<?php echo "Hình ".$count;$count=$count+1;?>" class="img-fluid img-thumbnail"></td>
+                            <td style="display:none;"><?php echo $row['food_id'];?></td>
+                            <td ><?php echo $row['name'];?></td>
+                            <td><?php echo $row['description'];?></td>	
+                            <td><?php echo $row['price'];?></td>
+                            <td><?php echo $row['num'];?></td>
+                              <!--delete mon an-->
+                              <td><button type="button" id="deletefood" class="btn btn-secondary">Xóa</button></td>
+							  <!--modify button-->
+							  <td><button type="button" onclick="modifyEating()" class="btn btn-primary" data-toggle="modal" data-target="#modify-eating">
+								Sửa</button>
+								<div class="modal fade" id="modify-eating" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								  <div class="modal-dialog">
+									<div class="modal-content">
+									  <div class="modal-header">
+										<h5 class="modal-title" id="modifyEatingNotice">Chỉnh sửa thông tin sản phẩm</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										  <span aria-hidden="true">&times;</span>
+										</button>
+									  </div>
+									  <div class="modal-body">
+										<form method="post"  id="modify-eating" accept-charset="UTF-8">
+											<div  id="modify-eating-form" >
+											    <fieldset id="modify-chosen-eating" class="form-horizontal">
+											    	<div class="form-group required" style="display:none;">
+												  <label  class="control-label" for="food_id">Id</label>
+												  <div class="col-sm-10">
+													<input type="text" value="" name="eating[food_id]" id="food_id"  class="form-control"  autofocus>
+												  </div>
+												</div>
+												<div class="form-group required">
+												  <label  class="control-label" for="name">Tên sản phẩm</label>
+												  <div class="col-sm-10">
+													<input type="text" value="" name="eating[name]" id="name" placeholder="Tên món ăn"  class="form-control"  autofocus>
+												  </div>
+												</div>
+											
+												<div class="form-group required">
+												  <label  class="control-label" for="description">Giới thiệu</label>
+												  <div class="col-sm-10">
+													<input type="text" value="" name="eating[description]" id="description" placeholder="Giới thiệu"  class="form-control"  autocorrect="off">
+												  </div>
+												</div>
+												<div class="form-group required">
+													<label  class="control-label" for="price">Giá bán</label>
+													<div class="col-sm-10">
+													  <input type="text" value="" name="eating[price]" id="price" placeholder="10000VND"  class="form-control"  autocorrect="off">
+													</div>
+												</div>
+                        <div class="form-group required">
+													<label  class="control-label" for="num">Số lượng</label>
+													<div class="col-sm-10">
+													  <input type="text" value="" name="eating[num]" id="num" placeholder="10"  class="form-control"  autocorrect="off">
+													</div>
+												</div>
+												<div class="form-group required">
+													<label for="image-description">Hình minh họa</label>
+													<input type="file" class="form-control-file" id="image-description" name="image-description">
+												</div>
+												</fieldset>  
+											</div>
+										                               
+									  </div>
+									<div class="modal-footer">
+										<div>					
+											<button name="save-modify" id="button-modify-eating1" class="btn btn-primary">
+											  <span>
+												<i class="fa fa-hacker-news left"></i>
+												Lưu
+											  </span>
+											</button>
+											 &nbsp;
+											hoặc <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+										</div>
+									</div>
+								</form> 
+									</div>
+								  </div>
+								</div></td>
                           </tr>
-                      <?php } ?>
+                          <?php
+						}
+						?>
                         </tbody>
-                    </table>
+					</table>
+					<script>
+						function modifyEating() {
+					  // event.target will be the input element.
+						var td = event.target.parentNode; 
+						  var tr = td.parentNode; // the row to be removed
+						  var food_id=tr.cells[2].innerHTML;
+						  var name=tr.cells[3].innerHTML;
+						  var description=tr.cells[4].innerHTML;
+						  var price=tr.cells[5].innerHTML;
+              var num=tr.cells[6].innerHTML;
+						  var x= document.getElementById("modify-eating");
+						  x.style.display="block";
+						var name2=document.getElementsByName("eating[name]")[0];
+						var food_id2=document.getElementsByName("eating[food_id]")[0];
+						var description2=document.getElementsByName("eating[description]")[0];
+						var price2=document.getElementsByName("eating[price]")[0];
+            var num2=document.getElementsByName("eating[num]")[0];
+						name2.value=name;
+						food_id2.value=food_id;
+						description2.value=description;
+						price2.value=price;
+            num2.value=num;
+					}
+					</script>
+                      <!-- Button add eating modal -->
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                        Thêm sản phẩm mới.
+                      </button>
+  					
+  					          <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Thông tin sản phẩm</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                                
+                                    
+                                    	<div class="modal-body">
+                                    		<form method="post" id="add-new-eating" class="contact" accept-charset="UTF-8">
+                                    	<input type="hidden" name="form_type" value="add-new-eating" /><input type="hidden" name="utf8" value="✓" />
+                                        <div  id="add-new-eating-form" >
+                                            <div class="form-group required">
+                                              <label  class="control-label" for="name">Tên sản phẩm</label>
+                                              <div class="col-sm-10">
+                                                <input type="text" value="" name="eating[name]" id="name" placeholder="Tên sản phẩm"  class="form-control"  autofocus>
+                                              </div>
+                                            </div>
+                                        
+                                            <div class="form-group required">
+                                              <label  class="control-label" for="description">Giới thiệu</label>
+                                              <div class="col-sm-10">
+                                                <input type="text" value="" name="eating[description]" id="description" placeholder="Giới thiệu"  class="form-control"  autocorrect="off" autocapitalize="off">
+                                              </div>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label  class="control-label" for="price">Giá bán</label>
+                                                <div class="col-sm-10">
+                                                  <input type="text" value="" name="eating[price]" id="price" placeholder="10.000VND"  class="form-control"  autocorrect="off" autocapitalize="off">
+                                                </div>
+                                            </div>
+                                            <div class="form-group required">
+                                              <label  class="control-label" for="num">Số lượng</label>
+                                              <div class="col-sm-10">
+                                                <input type="text" value="" name="eating[num]" id="num" placeholder="10"  class="form-control"  autocorrect="off">
+                                              </div>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label for="image-description">Hình minh họa</label>
+                                                <input type="file" name="fileToUpload" id="fileToUpload">
+                                            </div>
+										</div>
+										</form>  
+										</div>
+									                              
+                                
+                                <div class="modal-footer">
+                                    <div class="submit">					
+                                        <button class="btn btn-success" id="submit1"><i class="glyphicon glyphicon-inbox"></i> Thêm</button>
+                                         &nbsp;
+                                        hoặc <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<!--end of modal-->
+					
                 </div>
               </div>
             </div>
-            <!--manage menu area end-->
+            <!--manage eating area end-->
           </div>
     </div>
 
@@ -267,14 +428,14 @@
 		});
 	</script>
 	<script>
-		$('input[type=checkbox]').click(function() {
-    if($(this).is(':checked')) {
-        var tr=$(this).parent().parent().parent();
-        tr=Object.values(tr)[0].cells[0].innerHTML;
-        var postData= new FormData();
-        postData.append('orderlist_id',tr);
-        postData.append('status2',1);
-        $.ajax({
+    $('#selectStatus').change(function(){
+      var tr=$(this).parent().parent();
+      tr=Object.values(tr)[0].cells[0].innerHTML;
+      var status = document.getElementById('selectStatus');
+      var postData= new FormData();
+      postData.append('orderlist_id',tr);
+      postData.append('status2',status.value);
+      $.ajax({
                 type:'POST',
                 url:'setOrder.php',
                 processData: false,
@@ -287,52 +448,66 @@
                     alert("failure");
                 }
             });
-    } else {
-    	var tr=$(this).parent().parent().parent();
-        tr=Object.values(tr)[0].cells[0].innerHTML;
-        var postData= new FormData();
-        postData.append('orderlist_id',tr);
-        postData.append('status2',0);
-         $.ajax({
+      
+    });
+    $("button#deletefood").click(function(){
+    	var td = event.target.parentNode; 
+      		var tr = td.parentNode; // the row to be removed
+      		var name=tr.cells[3].innerHTML;
+         var postData = new FormData();
+         postData.append("name",name);
+            $.ajax({
                 type:'POST',
-                url:'setOrder.php',
+                url:'deletefood.php',
                 processData: false,
                 contentType: false,
                 data : postData,
                 success: function(msg){
-                alert(msg);
+					alert('Thành công');
+                location.reload();
                 },
                 error: function(){
                     alert("failure");
                 }
             });
-    }
-});
-		$('input[type=radio]').click(function() {
-    if($(this).is(':checked')) {
-        var tr=$(this).parent().parent().parent();
-        tr=Object.values(tr)[0].cells[0].innerHTML;
-        var postData= new FormData();
-        
-        var t2=$(this);
-        t2=Object.values(t2)[0].value;
-        postData.append('food_id',tr);
-        postData.append('status',t2);
-        $.ajax({
+    });
+    $("button#submit1").click(function(){
+         var postData = new FormData($("form#add-new-eating")[0]);
+            $.ajax({
                 type:'POST',
-                url:'setfood.php',
+                url:'add_menu.php',
                 processData: false,
                 contentType: false,
                 data : postData,
                 success: function(msg){
                 alert(msg);
+                $("#staticBackdrop").modal('hide');
+                location.reload();
                 },
                 error: function(){
                     alert("failure");
                 }
             });
-    } 
-});
+    });
+    $("button#button-modify-eating1").click(function(){
+        var postData = new FormData($("form#modify-eating")[0]);
+            $.ajax({
+                type:'POST',
+                url:'modifyfood.php',
+                processData: false,
+                contentType: false,
+                data : postData,
+                success: function(msg){
+					      alert(msg);
+                // $("#thanks").html(msg);
+                $("#modify-eating").modal('hide');
+                location.reload();
+                },
+                error: function(){
+                    alert("failure");
+                }
+            });
+    });
 	</script>
 <!--===============================================================================================-->
 	<script type="text/javascript" src="vendor/parallax100/parallax100.js"></script>

@@ -1,9 +1,6 @@
 <?php
-	echo("ok");
 	if($_FILES["image-description"]["name"]==""){
-		echo "Khong co hinh";
 		$conn=mysqli_connect("localhost","root","root");
-
             if(!$conn){
                 die(mysqli_error($conn));
             }
@@ -11,22 +8,23 @@
             $name=$_POST['eating']['name'];
             $description=$_POST['eating']['description'];
             $price=$_POST['eating']['price'];
+            $num=$_POST['eating']['num'];
             $conn->set_charset('utf8');
             $result=mysqli_select_db($conn,"smartfood");
             $result=mysqli_query($conn,"select image from food where food_id='$food_id'; ");
             $check=mysqli_fetch_array($result);
             $image=$check['image'];
-             $result=mysqli_query($conn,"call modifyFood('$food_id','$name','$image','$description','$price'); ");
-             $check=mysqli_fetch_array($result);
-             if($check[0]==1){
-             	echo "Thành Công!";
-             }
-            
-            
+            $result=mysqli_query($conn,"call modifyFood('$food_id','$name','$image','$description','$price'); ");
+            mysqli_next_result($conn);
+            $result=mysqli_query($conn, "call addFoodNum('$food_id','$num'); ");
+            if($result){
+            	echo "Thành Công!";
+            } else{
+                echo $num;
+            }
         
 	}
 	else{
-		$filename=$_FILES['file']['name'];
 
 $target_dir    = "images/";
 //Vị trí file lưu tạm trong server
@@ -84,6 +82,7 @@ if ($allowUpload) {
             $name=$_POST['eating']['name'];
             $description=$_POST['eating']['description'];
             $price=$_POST['eating']['price'];
+            $num=$_POST['eating']['num'];
             $conn->set_charset('utf8');
             $result=mysqli_select_db($conn,"smartfood");
             $result=mysqli_query($conn,"select image from food where food_id='$food_id'; ");
@@ -92,6 +91,8 @@ if ($allowUpload) {
             unlink(($target_dir.$oldimage));
              $result=mysqli_query($conn,"call modifyFood('$food_id','$name','$image','$description','$price'); ");
              $check=mysqli_fetch_array($result);
+             mysqli_next_result($conn);
+             $result=mysqli_query($conn, "call addFoodNum('$food_id','$num');");
              if($check[0]==1){
              	echo "Thành Công!";
              }
