@@ -1,1 +1,1 @@
-# CNPM ASSIGNMENT
+# Mini project
