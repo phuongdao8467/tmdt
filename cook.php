@@ -152,8 +152,8 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Hình minh họa</th>
-                            <th scope="col">Tên món ăn</th>
-                            <th scope="col">Giới thiệu</th>
+                            <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Mô tả</th>
                             <th scope="col">Giá bán</th>
                             <th scope="col">Trạng thái</th>
                           </tr>

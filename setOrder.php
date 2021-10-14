@@ -26,7 +26,7 @@
 		$status2=4;
 	}
 	$result=mysqli_query($conn,"update orderlist set status2='$status2' where orderlist_id='$orderlist_id'");
-	$check=mysqli_fetch_array($result);
+	// $check=mysqli_fetch_array($result);
 	if(!$result){
 		echo "Thất bại";
 	}
