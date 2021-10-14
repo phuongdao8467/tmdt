@@ -2,7 +2,7 @@
 	echo("ok");
 	if($_FILES["image-description"]["name"]==""){
 		echo "Khong co hinh";
-		$conn=mysqli_connect("localhost","root","root");
+		$conn=mysqli_connect("localhost","root",'');
 
             if(!$conn){
                 die(mysqli_error($conn));
@@ -74,7 +74,7 @@ if (!in_array($imageFileType,$allowtypes ))
 if ($allowUpload) {
     if (move_uploaded_file($_FILES["image-description"]["tmp_name"], $target_file))
     {
-        $conn=mysqli_connect("localhost","root","root");
+        $conn=mysqli_connect("localhost","root",'');
 
             if(!$conn){
                 die(mysqli_error($conn));

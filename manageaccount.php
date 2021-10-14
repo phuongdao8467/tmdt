@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost", "root", "root");
+$conn = mysqli_connect("localhost", "root", '');
 if (!$conn) {
 	die(mysqli_error($conn));
 }
@@ -110,7 +110,7 @@ include("includes/check-shutdown.php");
 						<div class="col-8">
 							<div class="tab-content" id="nav-tabContent">
 								<?php
-								$conn = mysqli_connect("localhost", "root", "root");
+								$conn = mysqli_connect("localhost", "root", '');
 								if (!$conn) {
 									die(mysqli_error($conn));
 								}

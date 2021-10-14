@@ -14,7 +14,7 @@
 			$customer=$_POST['customer'];
 			$email=$customer['email'];
 			$password=$customer['password'];	
-			$conn=mysqli_connect("localhost","root","root");
+			$conn=mysqli_connect("localhost","root",'');
 			if (strlen($email) == 0) {
 				echo "Sai email!";
 				return;

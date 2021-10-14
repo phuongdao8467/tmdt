@@ -3,7 +3,7 @@
 		return;
 	}
 	$user_id = $_SESSION['user_id'];
-	$conn=mysqli_connect("localhost","root","root");
+	$conn=mysqli_connect("localhost","root",'');
 	if(!$conn){
 		die(mysqli_error($conn));
 	}
@@ -21,7 +21,7 @@
 		return;
 	}
 	$user_id = $_SESSION['user_id'];
-	$conn=mysqli_connect("localhost","root","root");
+	$conn=mysqli_connect("localhost","root",'');
 	if(!$conn){
 		die(mysqli_error($conn));
 	}

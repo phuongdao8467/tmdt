@@ -2,7 +2,7 @@
   session_start();
   include("includes/permission_cheff.php");
 	session_start();
-	$conn=mysqli_connect("localhost","root","root");
+	$conn=mysqli_connect("localhost","root",'');
 	if(!$conn){
 		die(mysqli_error($conn));
 	}
@@ -86,22 +86,23 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Hình minh họa</th>
-                            <th scope="col">Tên món ăn</th>
+                            <th scope="col">Tên sản phẩm</th>
                             <th scope="col">Số lượng</th>
                             <th scope="col">Time</th>
+                            <th scope="col">Thông tin</th>
                             <th scope="col">Hoàn thành</th>
                           </tr>
                         </thead>
                         <tbody>
                         	<?php
-  								$conn=mysqli_connect("localhost","root","root");
+  								$conn=mysqli_connect("localhost","root",'');
   								if(!$conn){
      								die(mysqli_error($conn));
   								}
   								$result=mysqli_select_db($conn,"smartfood");
   								$conn->set_charset('utf8');
   								//$user_id=$_SESSION['user_id'];
-  								$result=mysqli_query($conn,"select orderlist_id, image, name,num, time1, status2 from orderlist,food where orderlist.food_id=food.food_id;");
+  								$result=mysqli_query($conn,"select orderlist_id, image, name,num, time1,name_order, phone, adress, status2 from orderlist,food where orderlist.food_id=food.food_id;");
   								$orders=array();
   								$food = array();
   								$num=array();
@@ -119,6 +120,11 @@
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['num']; ?></td>
                             <td><?php echo date("H:i",strtotime($row['time1'])); ?></td>
+                            <td>
+                              <?php echo "Tên: " .$row['name_order']; ?> <br>
+                              <?php echo "sđt: " .$row['phone']; ?> <br>
+                              <?php echo "Địa chỉ: " .$row['adress']; ?>
+                            </td>
                             <td><div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                               </div></td>
@@ -146,15 +152,15 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Hình minh họa</th>
-                            <th scope="col">Tên món ăn</th>
-                            <th scope="col">Giới thiệu</th>
+                            <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Mô tả</th>
                             <th scope="col">Giá bán</th>
                             <th scope="col">Trạng thái</th>
                           </tr>
                         </thead>
                         <tbody>
                         	<?php
-  								$conn=mysqli_connect("localhost","root","root");
+  								$conn=mysqli_connect("localhost","root",'');
   								if(!$conn){
      								die(mysqli_error($conn));
   								}
