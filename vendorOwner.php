@@ -25,7 +25,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Vendor Owner</title>
+	<title>Quản lý</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -451,12 +451,12 @@
                                                             Nhân viên
                                                         </label>
                                                     </div>
-                                                    <div class="form-check">
+                                                    <!-- <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="role" id="ITer1" value="IT">
                                                         <label class="form-check-label" for="ITer1">
                                                             IT
                                                         </label>
-                                                    </div>
+                                                    </div> -->
                                                     </div>
                                                 </div>
                                             </div>

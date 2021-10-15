@@ -25,7 +25,7 @@ $role = $check['role1'];
 <html lang="en">
 
 <head>
-	<title>Bữa ăn của tôi</title>
+	<title>Túi đồ</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
