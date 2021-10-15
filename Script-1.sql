@@ -48,10 +48,14 @@ create table orderlist(
 	time1 datetime,
 	status2 int,
 	bill_id int,
+	name_order varchar(50) NOT NULL,
+  	phone varchar(10) NOT NULL,
+  	adress text NOT NULL
 	primary key(orderlist_id),
 	Foreign key (user_id) references user(user_id) on DELETE set NULL,
 	Foreign key (food_id) references food(food_id) on DELETE CASCADE
 );
+
 Drop table if exists bill;
 create table bill(
 	bill_id int not null,

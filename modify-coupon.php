@@ -3,7 +3,7 @@
 	$value = $_POST['coupon']['value-coupon'];
 	$date_start = $_POST['coupon']['date-start'];
 	$date_end = $_POST['coupon']['date-end'];
-	$conn=mysqli_connect("localhost","root","root");
+	$conn=mysqli_connect("localhost","root",'');
 	if(!$conn){
 		die(mysqli_error($conn));
 	}

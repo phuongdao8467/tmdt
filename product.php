@@ -123,7 +123,7 @@ include("includes/header.php");
 					<!-- Product -->
 					<div class="row product-container">
 						<?php
-								$conn=mysqli_connect("localhost","root","root");
+								$conn=mysqli_connect("localhost","root",'');
 								if(!$conn){
 									die(mysqli_error($conn));
 								}

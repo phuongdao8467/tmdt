@@ -1,7 +1,7 @@
 <?php
 	$order_id=$_POST['order_id'];
 	$num=$_POST['num'];
-	$conn=mysqli_connect("localhost","root","root");
+	$conn=mysqli_connect("localhost","root",'');
 
 	if(!$conn){
 		die(mysqli_error($conn));

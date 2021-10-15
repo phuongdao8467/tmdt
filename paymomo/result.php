@@ -36,7 +36,7 @@ if (!empty($_GET)) {
 
     if ($m2signature == $partnerSignature) {
         if ($errorCode == '0') {
-            $conn=mysqli_connect("localhost","root","root");
+            $conn=mysqli_connect("localhost","root",'');
             if(!$conn){
                 die(mysqli_error($conn));
             }

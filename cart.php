@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("includes/permission_manageaccount.php");
-$conn = mysqli_connect("localhost", "root", "root");
+$conn = mysqli_connect("localhost", "root", '');
 if (!$conn) {
 	die(mysqli_error($conn));
 }
@@ -86,7 +86,7 @@ include("includes/check-shutdown.php");
 							<th class="column-5">Tổng</th>
 						</tr>
 						<?php
-						$conn = mysqli_connect("localhost", "root", "root");
+						$conn = mysqli_connect("localhost", "root", '');
 						if (!$conn) {
 							die(mysqli_error($conn));
 						}
@@ -191,7 +191,7 @@ include("includes/check-shutdown.php");
 									</tr>
 								</thead>
 								<?php
-								$conn = mysqli_connect("localhost", "root", "root");
+								$conn = mysqli_connect("localhost", "root", '');
 								if (!$conn) {
 									die(mysqli_error($conn));
 								}
