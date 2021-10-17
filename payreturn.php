@@ -8,7 +8,7 @@
         $status=3;
         $bill_id=$_POST['orderId'];
 		$result=mysqli_query($conn,"UPDATE orderlist set status2='$status' where bill_id='$bill_id'");
-        $check=mysqli_fetch_array($result);
+        //$check=mysqli_fetch_array($result);
         //get user_id
         $result=mysqli_query($conn,"select user_id from orderlist where bill_id='$bill_id'");
         $check=mysqli_fetch_array($result);

@@ -89,7 +89,7 @@
                             <th scope="col">Tên sản phẩm</th>
                             <th scope="col">Số lượng</th>
                             <th scope="col">Tổng</th>
-                            <th scope="col">Thời gian đặt hàng</th>                      
+                            <th scope="col">Địa chỉ</th>                      
                             <th scope="col">Trạng thái</th>
                           </tr>
                         </thead>
@@ -102,7 +102,7 @@
   								$result=mysqli_select_db($conn,"smartfood");
   								$conn->set_charset('utf8');
   								//$user_id=$_SESSION['user_id'];
-  								$result=mysqli_query($conn,"select orderlist_id, phonenumber, user.name as username, food.name as foodname, orderlist.num, status2, time1, value from orderlist, food, user, bill where orderlist.food_id=food.food_id and orderlist.user_id=user.user_id and orderlist.bill_id=bill.bill_id;");
+  								$result=mysqli_query($conn,"select adress, orderlist_id, phonenumber, user.name as username, food.name as foodname, orderlist.num, status2, time1, value from orderlist, food, user, bill where orderlist.food_id=food.food_id and orderlist.user_id=user.user_id and orderlist.bill_id=bill.bill_id;");
   								$orders=array();
   								$food = array();
   								$num=array();
@@ -121,12 +121,12 @@
                             <td><?php echo $row['num']; ?></td>
                             <td><?php echo $row['value']; ?></td>
                             
-                            <td><?php echo date("H:i",strtotime($row['time1'])); ?></td>
+                            <td><?php echo $row['adress']; ?></td>
                             <td>
-                              <select class="custom-select form-control" id="selectStatus" name="selectStatus">
+                              <select class="custom-select form-control" id="selectStatus<?php echo $row['orderlist_id'] ?>" name="selectStatus" onChange="func(<?php echo $row['status2']?> , <?php echo $row['orderlist_id'] ?>)">
                                 <option value="1" <?php if ($row['status2']==1) echo 'selected' ?> >Chưa thanh toán</option>
-                                <option value="2" <?php if ($row['status2']==3) echo 'selected' ?> >Đang giao</option>
-                                <option value="3" <?php if ($row['status2']==5) echo 'selected' ?> >Đã giao</option>
+                                <option value="3" <?php if ($row['status2']==3) echo 'selected' ?> >Đang giao</option>
+                                <option value="5" <?php if ($row['status2']==5) echo 'selected' ?> >Đã giao</option>
                               </select>
                             </td>
                           </tr>
@@ -428,13 +428,12 @@
 		});
 	</script>
 	<script>
-    $('#selectStatus').change(function(){
-      var tr=$(this).parent().parent();
-      tr=Object.values(tr)[0].cells[0].innerHTML;
-      var status = document.getElementById('selectStatus');
+    function func(status2, orderlist_id){
+      var id = 'selectStatus' + orderlist_id;
+      var status = document.getElementById(id).value;
       var postData= new FormData();
-      postData.append('orderlist_id',tr);
-      postData.append('status2',status.value);
+      postData.append('orderlist_id',orderlist_id);
+      postData.append('status2',status);
       $.ajax({
                 type:'POST',
                 url:'setOrder.php',
@@ -448,8 +447,8 @@
                     alert("failure");
                 }
             });
-      
-    });
+    };
+    
     $("button#deletefood").click(function(){
     	var td = event.target.parentNode; 
       		var tr = td.parentNode; // the row to be removed

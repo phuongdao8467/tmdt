@@ -107,24 +107,8 @@
 				<div class="header-wrapicon2">
 					<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
 					
-					<!-- <div class="header-cart header-dropdown"> -->
 					<?php include "./phpModules/displayCart.php"; ?>
-					<!-- <div class="header-cart-buttons">
-						<div class="header-cart-wrapbtn">
-							
-							<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-								Giỏ hàng
-							</a>
-						</div>
-
-						<div class="header-cart-wrapbtn">
-							
-							<a href="myOrder.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-								Túi của tôi
-							</a>
-						</div>
-					</div> -->
-					<!-- </div> -->
+				
 				</div>
 			</div>
 		</div>

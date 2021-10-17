@@ -1,5 +1,6 @@
 <?php 
 	$orderlist_id=$_POST['orderlist_id'];
+	$status2=$_POST['status2'];
 	$conn=mysqli_connect("localhost","root",'');
 
 	if(!$conn){
