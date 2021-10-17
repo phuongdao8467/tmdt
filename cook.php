@@ -1,7 +1,7 @@
 <?php
   session_start();
   include("includes/permission_cheff.php");
-	$conn=mysqli_connect("localhost","root","root");
+	$conn=mysqli_connect("localhost","root",'');
 	if(!$conn){
 		die(mysqli_error($conn));
 	}
@@ -95,7 +95,7 @@
                         </thead>
                         <tbody>
                         	<?php
-  								$conn=mysqli_connect("localhost","root","root");
+  								$conn=mysqli_connect("localhost","root",'');
   								if(!$conn){
      								die(mysqli_error($conn));
   								}
@@ -163,7 +163,7 @@
                         </thead>
                         <tbody>
                         	<?php
-								$conn=mysqli_connect("localhost","root","root");
+								$conn=mysqli_connect("localhost","root",'');
 								if(!$conn){
 									die(mysqli_error($conn));
 								}
