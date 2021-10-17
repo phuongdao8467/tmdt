@@ -1,7 +1,7 @@
 <?php
     $user_id=$_POST['user_id'];
     $coupon_id=$_POST['coupon_id'];
-    $conn=mysqli_connect("localhost","root","root");
+    $conn=mysqli_connect("localhost","root",'');
     if(!$conn){
         die(mysqli_error($conn));
     }

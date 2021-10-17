@@ -4,7 +4,7 @@ ini_set('display_errors', 'Off');
 $user_id=$_POST['user_id'];
 $ctpass=$_POST['ctpass'];
 $cupass=$_POST['cupass'];
-$conn=mysqli_connect("localhost","root","root");
+$conn=mysqli_connect("localhost","root",'');
 if(!$conn){
     die(mysqli_error($conn));
 }

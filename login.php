@@ -14,7 +14,7 @@
 			$customer=$_POST['customer'];
 			$email=$customer['email'];
 			$password=$customer['password'];	
-			$conn=mysqli_connect("localhost","root","root");
+			$conn=mysqli_connect("localhost","root",'');
 			if (strlen($email) == 0) {
 				echo "Sai email!";
 				return;
@@ -65,7 +65,7 @@
 						header("refresh: 1;url=./ITstaff.php");
 						break;
 					case 2:
-						header("refresh: 1;url=./supplier.php");
+						header("refresh: 1;url=./cook.php");
 						break;
 					case 3: 
 						header("refresh: 1;url=./index.php");

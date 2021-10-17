@@ -5,7 +5,7 @@
 	$password=$_POST['employee']['password'];
 	$role=$_POST['role']=='cheff'?2:1;
 	$gender=1;
-	$conn=mysqli_connect("localhost","root","root");
+	$conn=mysqli_connect("localhost","root",'');
 	if(!$conn){
 		die(mysqli_error($conn));
 	}

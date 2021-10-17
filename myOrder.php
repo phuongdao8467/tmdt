@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("includes/permission_manageaccount.php");
-$conn = mysqli_connect("localhost", "root", "root");
+$conn = mysqli_connect("localhost", "root", '');
 if (!$conn) {
 	die(mysqli_error($conn));
 }
@@ -25,7 +25,7 @@ $role = $check['role1'];
 <html lang="en">
 
 <head>
-	<title>Bữa ăn của tôi</title>
+	<title>Túi đồ</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
@@ -76,8 +76,8 @@ $role = $check['role1'];
 	<body>
 		<div class="container">
 			<ul class="justify-content-center nav nav-tabs list-inline">
-				<li class="active list-group-item" data-toggle="tab" href="#myOrder">Bữa ăn của tôi</li>	
-				<li class="list-group-item" data-toggle="tab" href="#myCoupon">Mã giảm giá của tôi</li>
+				<li class="active list-group-item" data-toggle="tab" href="#myOrder">Đơn hàng</li>	
+				<li class="list-group-item" data-toggle="tab" href="#myCoupon">Mã giảm giá</li>
 			</ul>
 			<div class="tab-content">
 				<!--table of order-->
@@ -86,14 +86,16 @@ $role = $check['role1'];
 						<thead>
 							<tr>
 								<th>Hình ảnh</th>
-								<th>Tên món</th>
+								<th>Sản phẩm</th>
 								<th>Số lượng</th>
-								<th>Phương thức thanh toán</th>
+								<th>Thời gian đặt hàng</th>
+								<th>Thông tin</th>
+								<th>Thanh toán</th>
 								<th>Trạng Thái</th>
 							</tr>
 						</thead>
 						<?php
-						$conn = mysqli_connect("localhost", "root", "root");
+						$conn = mysqli_connect("localhost", "root", '');
 						if (!$conn) {
 							die(mysqli_error($conn));
 						}
@@ -108,12 +110,20 @@ $role = $check['role1'];
 							$food_prop = mysqli_query($conn, "select * from food where food_id=$food_item_id;");
 							$food_item = mysqli_fetch_array($food_prop);
 							$total_price = intval($total_price) + intval($row['num']) * intval($food_item['price']);
+							if(!empty($row['bill_id'])){
 						?>
 							<tbody>
 								<tr>
-									<td><img src="<?php echo "images/" . $food_item['image']; ?>" class="img-circle" alt="Mỳ cay" width="100" height="100"></td>
+									<td><img src="<?php echo "images/" . $food_item['image']; ?>" class="img-circle" alt="<?php echo $food_item['name']; ?>" width="100" height="100"></td>
 									<td><?php echo $food_item['name']; ?></td>
 									<td><?php echo $row['num']; ?></td>
+									<td><?php echo date($row['time1']); ?></td>
+									<td>
+										<?php echo "Tên: " .$row['name_order']; ?> <br>
+										<?php echo "sđt: " .$row['phone']; ?> <br>
+										<?php echo "Địa chỉ: " .$row['adress']; ?>
+										
+									</td>
 									<td><?php if ($row['status2'] == 2 or $row['status2'] == 4) {
 											echo "Online";
 										}
@@ -121,16 +131,16 @@ $role = $check['role1'];
 											echo "Tiền Mặt";
 										} ?></td>
 									<td><?php if ($row['status2'] == 4 or $row['status2'] == 5) {
-											echo "Đã Hoàn Thành";
+											echo "Đã giao";
 										}
 										if ($row['status2'] == 2 or $row['status2'] == 3) {
-											echo "Đang Chuẩn bị";
+											echo "Đang giao";
 										}
 										?>
 									</td>
 								</tr>
 							</tbody>
-						<?php } ?>
+						<?php }} ?>
 
 					</table>
 				</div>
@@ -147,7 +157,7 @@ $role = $check['role1'];
 							</tr>
 						</thead>
 						<?php
-						$conn = mysqli_connect("localhost", "root", "root");
+						$conn = mysqli_connect("localhost", "root", '');
 						if (!$conn) {
 							die(mysqli_error($conn));
 						}

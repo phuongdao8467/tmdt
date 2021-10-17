@@ -1,9 +1,28 @@
 <?php
 	if(isset($_SESSION['user_id']) == false){
+		?>
+		<div class="header-cart header-dropdown">
+		<div class="header-cart-buttons">
+		<div class="header-cart-wrapbtn">
+			<!-- Button -->
+			<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+				Giỏ hàng
+			</a>
+		</div>
+
+		<div class="header-cart-wrapbtn">
+			<!-- Button -->
+			<a href="myOrder.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+				Túi của tôi
+			</a>
+		</div>
+	</div>
+		</div>
+		<?php
 		return;
 	}
 	$user_id = $_SESSION['user_id'];
-	$conn=mysqli_connect("localhost","root","root");
+	$conn=mysqli_connect("localhost","root",'');
 	if(!$conn){
 		die(mysqli_error($conn));
 	}
@@ -21,7 +40,7 @@
 		return;
 	}
 	$user_id = $_SESSION['user_id'];
-	$conn=mysqli_connect("localhost","root","root");
+	$conn=mysqli_connect("localhost","root",'');
 	if(!$conn){
 		die(mysqli_error($conn));
 	}
@@ -61,4 +80,19 @@
 ?>
 	<div class="header-cart-total">
 		<?php echo $total_price; ?>
+	</div>
+	<div class="header-cart-buttons">
+		<div class="header-cart-wrapbtn">
+			<!-- Button -->
+			<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+				Giỏ hàng
+			</a>
+		</div>
+
+		<div class="header-cart-wrapbtn">
+			<!-- Button -->
+			<a href="myOrder.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+				Túi của tôi
+			</a>
+		</div>
 	</div>
