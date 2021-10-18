@@ -263,9 +263,6 @@ include("includes/check-shutdown.php");
 									<label class="radio-inline">
 										<input type="radio" name="genderS" value="1" checked="checked">Tiền Mặt</input>
 									</label>
-									<label class="radio-inline">
-										<input type="radio" name="genderS" value="0">MOMO</input>
-									</label>
 								</form>
 							</div>
 							<div class="size15 trans-0-4">
@@ -303,17 +300,6 @@ include("includes/check-shutdown.php");
 	<script>
 		$(function() {
 			$("button#payment").click(function() {
-				var radios = document.getElementsByName('genderS');
-
-				for (var i = 0, length = radios.length; i < length; i++) {
-					if (radios[i].checked) {
-						// do whatever you want with the checked radio
-						var iscart = radios[i].value;
-
-						// only one radio can be logically checked, don't check the rest
-						break;
-					}
-				}
 				var y = document.getElementsByClassName("column-0");
 				var Order_id = [].map.call(y, function(node) {
 					return node.textContent || node.innerText || "";
@@ -349,11 +335,7 @@ include("includes/check-shutdown.php");
 
 						var f = document.createElement('form');
 						f.method = 'POST';
-						if (iscart == "1") {
-							f.action = 'payreturn.php';
-						} else {
-							f.action = 'paymomo/init_payment.php';
-						}
+						f.action = 'payreturn.php';
 						var i = document.createElement('input');
 						i.name = 'orderId';
 						i.value = bill_id;
