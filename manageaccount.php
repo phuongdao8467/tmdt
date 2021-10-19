@@ -21,7 +21,7 @@ include("includes/check-shutdown.php");
 <html lang="en">
 
 <head>
-	<title>Manage account</title>
+	<title>Thông tin cá nhân</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->

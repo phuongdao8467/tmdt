@@ -25,7 +25,7 @@ include("includes/check-shutdown.php");
 <html lang="en">
 
 <head>
-	<title>Cart</title>
+	<title>Giỏ hàng</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
