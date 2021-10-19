@@ -65,10 +65,7 @@
 					<!-- <form class="leave-comment"> -->
 						<h4 class="m-text26 p-b-36 p-t-15">
 							Gửi tin
-						</h4>
-						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="email" name="email" id="email" placeholder="Email Address">
-						</div>
+						</h4>						
 
 						<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="message" id="message" placeholder="Message"></textarea>
 
@@ -113,7 +110,7 @@
 	<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
 	<script type="text/javascript">
 		function func(){
-			var email = document.getElementById('email').value;
+			
 			var message = document.getElementById('message').value;
 			window.open('mailto:phuong.dao1902bk@hcmut.edu.vn?subject=tmdt&body=' + message);
 

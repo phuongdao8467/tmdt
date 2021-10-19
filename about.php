@@ -70,7 +70,7 @@ include("includes/check-shutdown.php");
 
 					<li class="p-b-9">
 						<a href="#" class="s-text3">
-							Đặng Nguyễn Anh Phương
+							Nguyễn Đặng Anh Phương
 						</a>
 					</li>
 					<li class="p-b-9">
@@ -89,7 +89,7 @@ include("includes/check-shutdown.php");
 						</a>
 					</li>
 					<li class="p-b-9">
-						<a href="https://www.facebook.com/dt.phuong.56" class="s-text3">
+						<a href="#" class="s-text3">
 							Đào Thanh Phương
 						</a>
 					</li>
