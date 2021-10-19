@@ -95,6 +95,9 @@ include("includes/check-shutdown.php");
 	</div>
 	<div class="contentforlayout">
 		<br>
+		<br>
+		<br>
+		<br>
 		<div class="container">
 			<div class="row">
 				<div id="content" class="col-sm-12">
@@ -121,21 +124,21 @@ include("includes/check-shutdown.php");
 								?>
 								<div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
 									<p class="lead">
-										Họ và tên: <?php echo $user_detail['name']; ?>
+										Họ và tên: &ensp; <?php echo $user_detail['name']; ?>
 									</p>
 									<p class="lead">
-										Email: <?php echo $user_detail['email']; ?>
+										Email:&emsp; &emsp; &nbsp; <?php echo $user_detail['email']; ?>
 									</p>
 								</div>
 								<div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
 									<p class="lead">
-										Chức vụ: <?php
+										Chức vụ: &ensp; <?php 
 													switch ($user_detail['role1']) {
 														case 1:
 															echo "Kỹ thuật viên";
 															break;
 														case 2:
-															echo "Đầu bếp";
+															echo "Nhân viên";
 															break;
 														case 4:
 															echo "Quản trị viên";
@@ -150,7 +153,7 @@ include("includes/check-shutdown.php");
 								<div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
 
 									<p class="lead">
-										Số điện thoại: <?php echo $user_detail['phonenumber']; ?>
+										Số điện thoại: &ensp; <?php echo $user_detail['phonenumber']; ?>
 									</p>
 								</div>
 								<div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
@@ -195,8 +198,14 @@ include("includes/check-shutdown.php");
 			</div>
 			<br>
 			<br>
+			<br>
+													
+		
 		</div>
-
+	    <br>
+		<br>
+		<br>
+		<br>
 
 		<!-- Footer -->
 		<?php include("includes/footer.php");?>

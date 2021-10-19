@@ -37,14 +37,14 @@
 			$email=mysqli_real_escape_string($conn, $email);
 			$password=mysqli_real_escape_string($conn, $password);
 			$result=mysqli_query($conn,"select * from user where email='$email' and passhash='$password';");
-			$check=mysqli_fetch_array($result);
-			$user_id=$check['user_id'];
+			$check=mysqli_fetch_array($result);			
 			if(is_null($check)){
 				echo "Đăng không thành công!";
 				header("refresh: 1;url=./login.html");
 			}
 			else{
 				// $role=$check['role1'];
+				$user_id=$check['user_id'];
 				session_start();
 				$_SESSION['loggedin']=true;
 				$value=generateRandomString();
@@ -62,16 +62,16 @@
 				$role=$check['role1'];
 				switch ($role) {
 					case 1:
-						header("refresh: 1;url=./ITstaff.php");
+						header("refresh: 0.5;url=./ITstaff.php");
 						break;
 					case 2:
-						header("refresh: 1;url=./cook.php");
+						header("refresh: 0.5;url=./cook.php");
 						break;
 					case 3: 
-						header("refresh: 1;url=./index.php");
+						header("refresh: 0.5;url=./index.php");
 						break;
 					case 4: 
-						header("refresh: 1;url=./vendorOwner.php");
+						header("refresh: 0.5;url=./vendorOwner.php");
 						break;
 				};
 			}
