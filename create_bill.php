@@ -2,8 +2,11 @@
 	$user_id=$_POST['user_id'];
 	$coupon_id=$_POST['coupon_id'];
 	$order_id=$_POST['order_id'];
+	$address=$_POST['address'];
+	$phone=$_POST['phone'];
+	$name=$_POST['name'];
 	$order_id=array_map('intval',explode(' ,', $order_id));
-	$conn=mysqli_connect("localhost","root","root");
+	$conn=mysqli_connect("localhost","root",'');
 	if(!$conn){
 		die(mysqli_error($conn));
 	}
@@ -37,7 +40,7 @@
 		$price=$row['price'];
 		$value+=$num*$price;
 		//update bill info
-		$result=mysqli_query($conn,"UPDATE orderlist set bill_id='$bill_id' where orderlist_id='$item';");
+		$result=mysqli_query($conn,"UPDATE orderlist set bill_id='$bill_id', name_order='$name', phone='$phone', adress='$address' where orderlist_id='$item';");
 	}
 	$value=$value-$discount;
 	if($value<0) $value=0;

@@ -2,7 +2,7 @@
 <?php 
   session_start();
   include("includes/permission_admin.php");
-	$conn=mysqli_connect("localhost","root","root");
+	$conn=mysqli_connect("localhost","root",'');
 	if(!$conn){
 		die(mysqli_error($conn));
 	}
@@ -25,7 +25,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Vendor Owner</title>
+	<title>Quản lý</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -79,7 +79,7 @@
               <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
                   <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    Quản lí món ăn.
+                    Quản lí sản phẩm.
                   </button>
                 </h2>
               </div>
@@ -90,8 +90,8 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Hình minh họa</th>
-                            <th scope="col">Tên món ăn</th>
-                            <th scope="col">Giới thiệu</th>
+                            <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Mô tả</th>
                             <th scope="col">Giá bán</th>
                             <th scope="col">Trạng thái</th>
 							<th scope="col"></th>
@@ -100,7 +100,7 @@
                         </thead>
                         <tbody>
                         	<?php
-								$conn=mysqli_connect("localhost","root","root");
+								$conn=mysqli_connect("localhost","root",'');
 								if(!$conn){
 									die(mysqli_error($conn));
 								}
@@ -128,7 +128,7 @@
 								  <div class="modal-dialog">
 									<div class="modal-content">
 									  <div class="modal-header">
-										<h5 class="modal-title" id="modifyEatingNotice">Chỉnh sửa thông tin món ăn</h5>
+										<h5 class="modal-title" id="modifyEatingNotice">Chỉnh sửa thông tin sản phẩm</h5>
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										  <span aria-hidden="true">&times;</span>
 										</button>
@@ -144,16 +144,16 @@
 												  </div>
 												</div>
 												<div class="form-group required">
-												  <label  class="control-label" for="name">Tên món ăn</label>
+												  <label  class="control-label" for="name">Tên sản phẩm</label>
 												  <div class="col-sm-10">
-													<input type="text" value="" name="eating[name]" id="name" placeholder="Tên món ăn"  class="form-control"  autofocus>
+													<input type="text" value="" name="eating[name]" id="name" placeholder="Tên sản phẩm"  class="form-control"  autofocus>
 												  </div>
 												</div>
 											
 												<div class="form-group required">
-												  <label  class="control-label" for="description">Giới thiệu</label>
+												  <label  class="control-label" for="description">Mô tả</label>
 												  <div class="col-sm-10">
-													<input type="text" value="" name="eating[description]" id="description" placeholder="Giới thiệu"  class="form-control"  autocorrect="off" autocapitalize="off">
+													<input type="text" value="" name="eating[description]" id="description" placeholder="Mô tả"  class="form-control"  autocorrect="off" autocapitalize="off">
 												  </div>
 												</div>
 												<div class="form-group required">
@@ -216,7 +216,7 @@
 					</script>
                       <!-- Button add eating modal -->
                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                        Thêm món mới.
+                        Thêm sản phẩm.
                       </button>
   					
   					<!-- Modal -->
@@ -271,7 +271,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Thông tin món ăn</h5>
+                                    <h5 class="modal-title" id="staticBackdropLabel">Thông tin sản phẩm</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -283,16 +283,16 @@
                                     	<input type="hidden" name="form_type" value="add-new-eating" /><input type="hidden" name="utf8" value="✓" />
                                         <div  id="add-new-eating-form" >
                                             <div class="form-group required">
-                                              <label  class="control-label" for="name">Tên món ăn</label>
+                                              <label  class="control-label" for="name">Tên sản phẩm</label>
                                               <div class="col-sm-10">
-                                                <input type="text" value="" name="eating[name]" id="name" placeholder="Tên món ăn"  class="form-control"  autofocus>
+                                                <input type="text" value="" name="eating[name]" id="name" placeholder="Tên sản phẩm"  class="form-control"  autofocus>
                                               </div>
                                             </div>
                                         
                                             <div class="form-group required">
-                                              <label  class="control-label" for="description">Giới thiệu</label>
+                                              <label  class="control-label" for="description">Mô tả</label>
                                               <div class="col-sm-10">
-                                                <input type="text" value="" name="eating[description]" id="description" placeholder="Giới thiệu"  class="form-control"  autocorrect="off" autocapitalize="off">
+                                                <input type="text" value="" name="eating[description]" id="description" placeholder="Mô tả"  class="form-control"  autocorrect="off" autocapitalize="off">
                                               </div>
                                             </div>
                                             <div class="form-group required">
@@ -351,7 +351,7 @@
                         <tbody>
 
                         	<?php
-								$conn=mysqli_connect("localhost","root","root");
+								$conn=mysqli_connect("localhost","root",'');
 								if(!$conn){
 									die(mysqli_error($conn));
 								}
@@ -367,7 +367,7 @@
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['phonenumber']; ?></td>
                             <td><?php echo $row['email']; ?></td>
-                            <td><?php if($row['role1']==1){echo "IT";}else{echo "Đầu bếp";}?></td>
+                            <td><?php if($row['role1']==1){echo "IT";}else{echo "Nhân viên";}?></td>
                             <!--delete info employee-->
                             <td><button type="button" id="deleteemployee" class="btn btn-secondary">Xóa</button></td>
                                 <div class="modal fade" id="delete-employee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -448,15 +448,15 @@
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="role" id="cooker1" value="cheff" checked>
                                                         <label class="form-check-label" for="cooker1">
-                                                            Đầu bếp
+                                                            Nhân viên
                                                         </label>
                                                     </div>
-                                                    <div class="form-check">
+                                                    <!-- <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="role" id="ITer1" value="IT">
                                                         <label class="form-check-label" for="ITer1">
-                                                            Nhân viên IT
+                                                            IT
                                                         </label>
-                                                    </div>
+                                                    </div> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -506,13 +506,13 @@
                           </thead>
                           <tbody>
                           	<?php 
-                          		$conn=mysqli_connect("localhost","root","root");
+                          		$conn=mysqli_connect("localhost","root",'');
 								if(!$conn){
 									die(mysqli_error($conn));
 								}
 								$result=mysqli_select_db($conn,"smartfood");
 								$conn->set_charset('utf8');
-            					$result=mysqli_query($conn,"select date(time1) as date,count(num) as num from orderlist group by 1");
+            					$result=mysqli_query($conn,"select date(time1) as date,count(num) as num, status2 from orderlist group by 1");
             					$stt=0;
 								while ($row=mysqli_fetch_array($result)) {
 									$stt++;
@@ -539,20 +539,20 @@
 											<thead>
 											  <tr>
 												<th scope="col">#</th>
-												<th scope="col">Tên món ăn</th>
+												<th scope="col">Tên sản phẩm</th>
 												<th scope="col">Số lượng</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php
-													$conn2=mysqli_connect("localhost","root","root");
+													$conn2=mysqli_connect("localhost","root",'');
 													if(!$conn2){
 														die(mysqli_error($conn));
 													}
 													$foods=mysqli_select_db($conn2,"smartfood");
 													$conn2->set_charset('utf8');
 													$date = $row['date'];
-													$foods=mysqli_query($conn2,"select food_id, name, sum(num) as num from (select date(orderlist.time1) as date, orderlist.food_id,orderlist.num, food.name  from orderlist left join food on orderlist.food_id= food.food_id where date(orderlist.time1)='$date') as info group by food_id;");
+													$foods=mysqli_query($conn2,"select food_id, name,status2, sum(num) as num from (select date(orderlist.time1) as date, orderlist.food_id,orderlist.num, food.name, status2  from orderlist left join food on orderlist.food_id= food.food_id where date(orderlist.time1)='$date') as info group by food_id;");
 													$foodStt = 0;
 													while ($foodRow=mysqli_fetch_array($foods)) {
 														$foodStt++;
@@ -630,7 +630,7 @@
                           </thead>
                           <tbody>
                           	<?php
-								$conn=mysqli_connect("localhost","root","root");
+								$conn=mysqli_connect("localhost","root",'');
 								if(!$conn){
 									die(mysqli_error($conn));
 								}
@@ -640,9 +640,9 @@
             					$stt=0;
 								while ($row=mysqli_fetch_array($result)) {
 									$stt++;
-									if($row['status2']==1){
-										continue;
-									}
+									// if($row['status2']==1){
+									// 	continue;
+									// }
 								?>
                             <tr>
                               <th scope="row"><?php echo $stt; ?></th>
@@ -831,99 +831,7 @@
     </div>
 
 	<!-- Footer -->
-	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
-		<div class="flex-w p-b-90">
-			<div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
-				<h4 class="s-text12 p-b-30">
-					GET IN TOUCH
-				</h4>
-
-				<div>
-					<p class="s-text7 w-size27">
-						Any questions? Let us know in store at 268 Ly Thuong Kiet, Ward 14, District 10, Ho Chi Minh 
-					</p>
-					<!--
-					<div class="flex-m p-t-30">
-						<a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
-						<a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
-						<a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
-						<a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
-						<a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
-					</div>
-					-->
-				</div>
-			</div>
-
-			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
-				<h4 class="s-text12 p-b-30">
-					Categories
-				</h4>
-
-				<ul>
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Food
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Drink 
-					</li>
-					<!-- <li class="p-b-9">
-						<div id="thanks"> aaddd</div>
-
-					</li> -->
-					
-				</ul>
-			</div>
-			<div class="w-size8 p-t-30 p-l-15 p-r-15 respon3">
-				<h4 class="s-text12 p-b-30">
-					Newsletter
-				</h4>
-
-				<form>
-					<div class="effect1 w-size9">
-						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@example.com">
-						<span class="effect1-line"></span>
-					</div>
-
-					<div class="w-size2 p-t-20">
-			
-						<!-- Button -->
-						<button class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-							Subscribe
-						</button>
-					</div>
-
-				</form>
-			</div>
-
-		</div>
-
-		<div class="t-center p-l-15 p-r-15">
-			<a href="#">
-				<img class="h-size2" src="images/icons/paypal.png" alt="IMG-PAYPAL">
-			</a>
-
-			<a href="#">
-				<img class="h-size2" src="images/icons/visa.png" alt="IMG-VISA">
-			</a>
-
-			<a href="#">
-				<img class="h-size2" src="images/icons/mastercard.png" alt="IMG-MASTERCARD">
-			</a>
-
-			<a href="#">
-				<img class="h-size2" src="images/icons/express.png" alt="IMG-EXPRESS">
-			</a>
-
-			<a href="#">
-				<img class="h-size2" src="images/icons/discover.png" alt="IMG-DISCOVER">
-			</a>
-
-		</div>
-	</footer>
+  <?php include("includes/footer.php");?>
 
 
 

@@ -48,10 +48,14 @@ create table orderlist(
 	time1 datetime,
 	status2 int,
 	bill_id int,
+	name_order varchar(50) NOT NULL,
+  	phone varchar(10) NOT NULL,
+  	adress text NOT NULL,
 	primary key(orderlist_id),
 	Foreign key (user_id) references user(user_id) on DELETE set NULL,
 	Foreign key (food_id) references food(food_id) on DELETE CASCADE
 );
+
 Drop table if exists bill;
 create table bill(
 	bill_id int not null,
@@ -277,7 +281,11 @@ begin
 end;
 $$
 DELIMITER ;
-call addfood('112','test','Ngon', 123);
+call addfood('gao.jpg','Gạo','Ngon', 10000);
+call addfood('carot.jpg','Cà rốt','Ngon', 10000);
+call addfood('cai.jpg','Cải','Ngon', 5000);
+call addfood('hanhla.jpg','Hành lá','Ngon', 1000);
+call addfood('CaThu.png','Cá Thu','Ngon', 50000);
 Drop procedure if exists setfood;
 DELIMITER $$
 CREATE procedure setfood(food_id1 int,status1 int)
@@ -290,7 +298,7 @@ begin
 end; $$
 DELIMITER ;
 
-CALL setfood(5,true);
+-- CALL setfood(5,true);
 
 Drop procedure if exists modifyFood;
 DELIMITER $$
@@ -536,4 +544,22 @@ Select * from usercoupon;
 INSERT INto coupon(coupon_id ,start1 ,end1 ,value ) values('ad-123','2019-12-30 00:00:00','2019-12-30 00:00:00',20000);
 call addCouponUser(3,'ad-123',4);
 
-
+-- add some new management product
+alter table food add num int;
+Drop procedure if exists addFoodNum;
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `smartfood`.`addFoodNum`(
+	food_id1 int,
+	in num1 int
+)
+begin
+	if(!exists(select * from food where food_id =food_id1))then
+		select -1;
+	else
+		Update food
+		set num=num1 where food_id=food_id1 ;
+		select 1;
+	end if;
+end
+	$$
+Delimiter ;	

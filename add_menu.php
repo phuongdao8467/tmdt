@@ -17,7 +17,6 @@
 //     	$uploadOk = 0;
 //   	}
 // 	}
-$filename=$_FILES['file']['name'];
 
 $target_dir    = "images/";
 //Vị trí file lưu tạm trong server
@@ -65,7 +64,7 @@ if (!in_array($imageFileType,$allowtypes ))
 if ($allowUpload) {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
     {
-        $conn=mysqli_connect("localhost","root","root");
+        $conn=mysqli_connect("localhost","root",'');
 
             if(!$conn){
                 die(mysqli_error($conn));
@@ -74,9 +73,9 @@ if ($allowUpload) {
             $name=$_POST['eating']['name'];
             $description=$_POST['eating']['description'];
             $price=$_POST['eating']['price'];
+            $num=$_POST['eating']['num'];
             $conn->set_charset('utf8');
             $result=mysqli_select_db($conn,"smartfood");
-
             $result=mysqli_query($conn,"call addfood('$image','$name','$description','$price')");
             $check=mysqli_fetch_array($result);
             if(!is_null($check)){
@@ -86,6 +85,8 @@ if ($allowUpload) {
                 }
                 else{
                     echo "Thành công!";
+                    mysqli_next_result($conn);
+                    $result=mysqli_query($conn, "call addFoodNum('$check[0]','$num'); ");
                 }
             }
             else{

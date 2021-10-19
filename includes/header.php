@@ -28,7 +28,7 @@
 						//session_start();
 						if (isset($_SESSION['loggedin']) == false) {
 						} else {
-							$conn = mysqli_connect("localhost", "root", "root");
+							$conn = mysqli_connect("localhost", "root", '');
 							if (!$conn) {
 								die(mysqli_error($conn));
 							}
@@ -60,7 +60,7 @@
 										<a>Tính năng</a>
 										<ul class="sub_menu">
 
-											<li><a href="cook.php">Đầu bếp</a></li>
+											<li><a href="cook.php">Nhân viên</a></li>
 										</ul>
 									</li>
 								<?php
@@ -106,22 +106,9 @@
 
 				<div class="header-wrapicon2">
 					<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+					
 					<?php include "./phpModules/displayCart.php"; ?>
-					<div class="header-cart-buttons">
-						<div class="header-cart-wrapbtn">
-							<!-- Button -->
-							<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-								Giỏ hàng
-							</a>
-						</div>
-
-						<div class="header-cart-wrapbtn">
-							<!-- Button -->
-							<a href="myOrder.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-								Túi của tôi
-							</a>
-						</div>
-					</div>
+				
 				</div>
 			</div>
 		</div>
@@ -195,10 +182,10 @@
 					<a href="product.php">Cửa hàng</a>
 				</li>
 				<?php
-				session_start();
+				// session_start();
 				if (isset($_SESSION['loggedin']) == false) {
 				} else {
-					$conn = mysqli_connect("localhost", "root", "root");
+					$conn = mysqli_connect("localhost", "root", '');
 					if (!$conn) {
 						die(mysqli_error($conn));
 					}
@@ -231,7 +218,7 @@
 							<li class="item-menu-mobile">
 								<a>Tính năng</a>
 								<ul class="sub-menu">
-									<li><a href="cook.php">Đầu bếp</a></li>
+									<li><a href="cook.php">Nhân Viên</a></li>
 								</ul>
 								<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
 							</li>

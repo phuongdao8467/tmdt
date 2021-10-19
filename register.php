@@ -32,7 +32,7 @@
 
 			$gender=1;
 			$role=3;	
-			$conn=mysqli_connect("localhost","root","root");
+			$conn=mysqli_connect("localhost","root",'');
 
 			if(!$conn){
 				die(mysqli_error($conn));

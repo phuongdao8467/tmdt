@@ -7,7 +7,7 @@
 
 				<div>
 					<p class="s-text7 w-size27">
-						Nếu bạn có đề xuất gì? Bạn có thể đến trực tiếp cửa hàng tại 268 Lý Thường Kiệt, phường 14, quận 10, Tp Hồ Chí Minh
+						68 Lý Thường Kiệt, phường 14, quận 10, Tp Hồ Chí Minh
 					</p>
 				</div>
 			</div>
@@ -20,13 +20,7 @@
 				<ul>
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Đồ ăn
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Đồ uống
+							Thực phẩm
 						</a>
 					</li>
 

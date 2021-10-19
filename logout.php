@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $conn=mysqli_connect("localhost","root","root");
+    $conn=mysqli_connect("localhost","root",'');
     if(!$conn){
         die(mysqli_error($conn));
     }

@@ -1,5 +1,5 @@
 <?php
-    $conn=mysqli_connect("localhost","root","root");
+    $conn=mysqli_connect("localhost","root",'');
 	if(!$conn){
 		die(mysqli_error($conn));
 	}
@@ -8,7 +8,7 @@
         $status=3;
         $bill_id=$_POST['orderId'];
 		$result=mysqli_query($conn,"UPDATE orderlist set status2='$status' where bill_id='$bill_id'");
-        $check=mysqli_fetch_array($result);
+        //$check=mysqli_fetch_array($result);
         //get user_id
         $result=mysqli_query($conn,"select user_id from orderlist where bill_id='$bill_id'");
         $check=mysqli_fetch_array($result);
@@ -20,7 +20,12 @@
         //get num coupon_user
         $result=mysqli_query($conn,"select num from usercoupon where user_id='$user_id'and coupon_id='$counpon_id';");
         $check=mysqli_fetch_array($result);
-        $num=intval($check[0]);
+        $num = 0;
+        if ($check){
+            $num=intval($check[0]);
+        } else {
+            $num = 0;
+        }        
         //decrease or delete usercoupon
         if($num<=1){
             $result=mysqli_query($conn,"delete from usercoupon where user_id='$user_id'and coupon_id='$counpon_id';");
@@ -29,3 +34,4 @@
             $result=mysqli_query($conn,"Update usercoupon set num=num-1 where user_id='$user_id'and coupon_id='$counpon_id';");
         }
         header("refresh: 1;url=./myOrder.php");
+?>
