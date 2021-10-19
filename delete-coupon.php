@@ -2,7 +2,7 @@
 
 $id = $_POST['coupon_id'];
 
-$conn=mysqli_connect("localhost","root",'';
+$conn=mysqli_connect("localhost","root",'');
 	if(!$conn){
 		die(mysqli_error($conn));
 	}

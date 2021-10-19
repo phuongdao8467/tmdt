@@ -209,22 +209,22 @@ call addcoupon("QN-05","2011-12-18 13:17:17","2011-12-19 13:17:17",10000);
 Drop procedure if Exists modifyCoupon;
 Delimiter $$
 Create procedure modifyCoupon(
+    id varchar(50),
 	coupon_id1 varchar(50),
 	start datetime,
 	end datetime,
 	value1 int
 )
 begin
-	if(!exists(select * from coupon where coupon_id=coupon_id1))then
+	if(!exists(select * from coupon where coupon_id=id))then
 		select -1;
 	else
 		Update coupon
-		set start1=start, end1=end, value=value1 where coupon_id=coupon_id1;
+		set coupon_id=coupon_id1, start1=start, end1=end, value=value1 where coupon_id=id;
 		select 1;
 	end if;
 end;  $$ 
-DELIMITER ;
-call modifycoupon("QN-04","2011-12-18 13:17:17","2011-12-19 13:17:17",15000);
+call modifycoupon("QN-04","QN-04","2011-12-18 13:17:17","2011-12-19 13:17:17",15000);
 
 Drop procedure if Exists deleteCoupon;
 Delimiter $$

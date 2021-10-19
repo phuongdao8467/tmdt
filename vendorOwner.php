@@ -684,7 +684,7 @@
 											</button>
 										  </div>
 										  <div class="modal-body">
-											<form method="post" action="#" id="modify-coupon" accept-charset="UTF-8"><input type="hidden" name="form_type" value="modify-coupon" /><input type="hidden" name="utf8" value="✓" />
+											<form method="post" id="modify-coupon" accept-charset="UTF-8"><input type="hidden" name="form_type" value="modify-coupon" /><input type="hidden" value="" name="coupon[IDedit]" id="ID" />
                                                 <div  id="modify-coupon-form" >
                                                     <fieldset id="modify-chosen-coupon" class="form-horizontal">
                                                         <div class="form-group required">
@@ -749,11 +749,13 @@
 						  var x= document.getElementById("modify-coupon");
 						  x.style.display="block";
 						var id2=document.getElementsByName("coupon[ID]")[0];
+            var idedit=document.getElementsByName("coupon[IDedit]")[0];
 						
 						var price2=document.getElementsByName("coupon[value-coupon]")[0];
 						var dateStart2=document.getElementsByName("coupon[date-start]")[0];
 						var dateEnd2=document.getElementsByName("coupon[date-end]")[0];
 						id2.value=id;
+            idedit.value=id;
 						price2.value=price;
 						dateStart2.value=dateStart;
 						dateEnd2.value=dateEnd;
@@ -775,7 +777,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="post" action="add-coupon.php" id="add-new-coupon" accept-charset="UTF-8"><input type="hidden" name="form_type" value="add-new-coupon" /><input type="hidden" name="utf8" value="✓" />
+                                            <form method="post" id="add-new-coupon" accept-charset="UTF-8"><input type="hidden" name="form_type" value="add-new-coupon" /><input type="hidden" name="utf8" value="✓" />
                                                 <div  id="add-new-coupon-form" >
                                                     <fieldset id="new-coupon" class="form-horizontal">
                                                         <div class="form-group required">
