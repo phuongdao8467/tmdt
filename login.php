@@ -39,7 +39,7 @@
 			$result=mysqli_query($conn,"select * from user where email='$email' and passhash='$password';");
 			$check=mysqli_fetch_array($result);			
 			if(is_null($check)){
-				echo "Đăng không thành công!";
+				echo "Đăng nhập không thành công!";
 				header("refresh: 1;url=./login.html");
 			}
 			else{
