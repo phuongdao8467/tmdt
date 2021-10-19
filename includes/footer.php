@@ -33,16 +33,12 @@
 
 				<form>
 					<div class="effect1 w-size9">
-						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@example.com">
+						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="nhom.phat.trien@example.com" disabled="true">
 						<span class="effect1-line"></span>
 					</div>
 
 					<div class="w-size2 p-t-20">
-
-						<!-- Button -->
-						<button class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-							Theo dõi
-						</button>
+						
 					</div>
 
 				</form>
