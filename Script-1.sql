@@ -281,7 +281,11 @@ begin
 end;
 $$
 DELIMITER ;
-call addfood('112','test','Ngon', 123);
+call addfood('gao.jpg','Gạo','Ngon', 10000);
+call addfood('carot.jpg','Cà rốt','Ngon', 10000);
+call addfood('cai.jpg','Cải','Ngon', 5000);
+call addfood('hanhla.jpg','Hành lá','Ngon', 1000);
+call addfood('CaThu.png','Cá Thu','Ngon', 50000);
 Drop procedure if exists setfood;
 DELIMITER $$
 CREATE procedure setfood(food_id1 int,status1 int)
@@ -294,7 +298,7 @@ begin
 end; $$
 DELIMITER ;
 
-CALL setfood(5,true);
+-- CALL setfood(5,true);
 
 Drop procedure if exists modifyFood;
 DELIMITER $$

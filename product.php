@@ -46,7 +46,7 @@
 include("includes/header.php");
 ?>
 	<!-- Title Page -->
-	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(images/heading-pages-02.jpg);">
+	<!-- <section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(images/index1.jpg);"> -->
 		<!--
 		<h2 class="l-text2 t-center">
 			Today's Menu
@@ -55,7 +55,7 @@ include("includes/header.php");
 			Make like you would at home
 		</p>
 		-->
-	</section>
+	<!-- </section> -->
 
 
 	<!-- Content page -->
@@ -68,7 +68,7 @@ include("includes/header.php");
 
 						<!--  -->
 						<h4 class="m-text14 p-b-32">
-							Lọc
+							Sắp xếp theo
 						</h4>
 
 						<div class="filter-price p-t-22 p-b-50 bo3">
@@ -89,27 +89,14 @@ include("includes/header.php");
 								</div>
 
 								<div class="s-text3 p-t-10 p-b-10">
-									<span id="value-lower">10.000</span> VNĐ - <span id="value-upper">500.000</span> VNĐ
+									<span id="value-lower">1.000</span> VNĐ - <span id="value-upper">500.000</span> VNĐ
 								</div>
 							</div>
 						</div>
-
-						<div class="search-product pos-relative bo4 of-hidden">
-							<input class="s-text7 size6 p-l-23 p-r-50 search-product-input" type="text" name="search-product" placeholder="Tìm	"...">
-
-							<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4 search-product-button">
-								<i class="fs-12 fa fa-search" aria-hidden="true"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
-					<!--  -->
-					<div class="flex-sb-m flex-w p-b-35">
-						<div class="flex-w">
-							<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-								<select class="selection-2 sort-product" name="sorting">
+						<div class="flex-sb-m flex-w p-b-35">
+						<div class="flex-w" >
+							<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10" style="border: 3px solid #b1154a;">
+								<select class="selection-2 sort-product" name="sorting" >
 									<option value='default'>Lọc theo</option>
 									<option value='lowFirst'>Giá: từ nhỏ đến lớn</option>
 									<option value='highFirst'>Giá: từ lớn đến nhỏ</option>
@@ -119,7 +106,18 @@ include("includes/header.php");
 
 
 					</div>
+					</div>
+				</div>
 
+				<div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
+					<!--  -->
+						<div style="border: 3px solid #b1154a; margin-bottom: 30px;" class="search-product pos-relative bo4 of-hidden" >
+							<input  class="s-text7 size6 p-l-23 p-r-50 search-product-input" type="text" name="search-product" placeholder="Tìm	"...">
+
+							<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4 search-product-button">
+								<i class="fs-12 fa fa-search" aria-hidden="true"></i>
+							</button>
+						</div>
 					<!-- Product -->
 					<div class="row product-container">
 						<?php
@@ -136,10 +134,10 @@ include("includes/header.php");
 										continue;
 								}
 								?>
-						<div class="col-sm-12 col-md-6 col-lg-4 p-b-50 product-block">
+						<div class="col-sm-12 col-md-6 col-lg-4 p-b-100 product-block">
 							<!-- Block2 -->
-							<div class="block2">
-								<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+							<div class="block2" style ="height:150px">
+								<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew" style ="height:150px">
 									<img src="<?php echo "images/".$row['image'];?>" style="height: 200px;"  alt="IMG-PRODUCT">
 
 									<div class="block2-overlay trans-0-4">
@@ -147,7 +145,6 @@ include("includes/header.php");
 											<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
 											<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
 										</a>
-
 										<div class="block2-btn-addcart w-size1 trans-0-4">
 											<!-- Button -->
 											<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
@@ -315,10 +312,10 @@ include("includes/header.php");
 	    var filterBar = document.getElementById('filter-bar');
 
 	    noUiSlider.create(filterBar, {
-	        start: [ 10000, 500000 ],
+	        start: [ 1000, 500000 ],
 	        connect: true,
 	        range: {
-	            'min': 10000,
+	            'min': 1000,
 	            'max': 500000
 	        }
 	    });
